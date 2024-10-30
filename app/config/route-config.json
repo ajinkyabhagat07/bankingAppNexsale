@@ -1,0 +1,165 @@
+{
+    "routes": [
+        
+        {
+            "controller": "../components/customer/controller/customer",
+            "route": "/api/v1/customer/createAdmin",
+            "method": "post",
+            "action": "createAdmin",
+            "secured" : false
+        },
+        {
+            "controller": "../components/customer/controller/customer",
+            "route": "/api/v1/customer/login",
+            "method": "post",
+            "action": "login",
+            "secured" : false,
+            "isAdmin": false,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/bank/controller/bank",
+            "route": "/api/v1/customer/createBank",
+            "method": "post",
+            "action": "create",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/customer/controller/customer",
+            "route": "/api/v1/customer/createUser",
+            "method": "post",
+            "action": "createUser",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/customer/controller/customer",
+            "route": "/api/v1/customer/getAll",
+            "method": "get",
+            "action": "getAll",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/customer/controller/customer",
+            "route": "/api/v1/customer/getById",
+            "method": "get",
+            "action": "getById",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/customer/controller/customer",
+            "route": "/api/v1/customer/delete",
+            "method": "delete",
+            "action": "deleteById",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/account/controller/account",
+            "route": "/api/v1/customer/createAccount",
+            "method": "post",
+            "action": "createAccount",
+            "secured" : true,
+            "isAdmin": false,
+            "isUser" : true
+        },
+        {
+            "controller": "../components/bank/controller/bank",
+            "route": "/api/v1/customer/deleteBank",
+            "method": "delete",
+            "action": "deleteBank",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/bank/controller/bank",
+            "route": "/api/v1/customer/getAllBank",
+            "method": "get",
+            "action": "getAllBank",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/account/controller/account",
+            "route": "/api/v1/customer/getBalance",
+            "method": "get",
+            "action": "getBalance",
+            "secured" : true,
+            "isAdmin": false,
+            "isUser" : true
+        },
+        {
+            "controller": "../components/account/controller/account",
+            "route": "/api/v1/customer/getAccountBalance",
+            "method": "get",
+            "action": "getAccountBalance",
+            "secured" : true,
+            "isAdmin": false,
+            "isUser" : true
+        },
+        {
+            "controller": "../components/bank/controller/bank",
+            "route": "/api/v1/customer/updateBank",
+            "method": "put",
+            "action": "updateBankById",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/customer/controller/customer",
+            "route": "/api/v1/customer/updateCustomer",
+            "method": "put",
+            "action": "updateCustomerById",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/account/controller/account",
+            "route": "/api/v1/customer/getAccount",
+            "method": "get",
+            "action": "getAccountByAccountNumber",
+            "secured" : true,
+            "isAdmin": false,
+            "isUser" : true
+        },
+        {
+            "controller": "../components/account/controller/account",
+            "route": "/api/v1/customer/deposit",
+            "method": "post",
+            "action": "deposit",
+            "secured" : true,
+            "isAdmin": false,
+            "isUser" : true
+        },
+        {
+            "controller": "../components/account/controller/account",
+            "route": "/api/v1/customer/withdraw",
+            "method": "post",
+            "action": "withdraw",
+            "secured" : true,
+            "isAdmin": false,
+            "isUser" : true
+        },
+        {
+            "controller": "../components/account/controller/account",
+            "route": "/api/v1/customer/transfer",
+            "method": "post",
+            "action": "transfer",
+            "secured" : true,
+            "isAdmin": false,
+            "isUser" : true
+        }
+    ]
+}
