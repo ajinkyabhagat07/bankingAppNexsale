@@ -7,6 +7,7 @@ const errorMiddleware = require('./app/middleware/error');
 
 
 
+require("./scheduler/emiScheduler")
 
 function configureApplication(app) {
   app.use(cors())

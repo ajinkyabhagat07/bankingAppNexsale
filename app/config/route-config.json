@@ -2,15 +2,17 @@
     "routes": [
         
         {
-            "controller": "../components/customer/controller/customer",
-            "route": "/api/v1/customer/createAdmin",
+            "controller": "../components/user/controller/user",
+            "route": "/api/v1/user/createUser",
             "method": "post",
-            "action": "createAdmin",
-            "secured" : false
+            "action": "createUser",
+            "secured" : false,
+            "isAdmin": false,
+            "isUser" : false
         },
         {
-            "controller": "../components/customer/controller/customer",
-            "route": "/api/v1/customer/login",
+            "controller": "../components/user/controller/user",
+            "route": "/api/v1/user/login",
             "method": "post",
             "action": "login",
             "secured" : false,
@@ -18,107 +20,35 @@
             "isUser" : false
         },
         {
-            "controller": "../components/bank/controller/bank",
-            "route": "/api/v1/customer/createBank",
+            "controller": "../components/user/controller/user",
+            "route": "/api/v1/user/verifytoken",
             "method": "post",
-            "action": "create",
+            "action": "verifyToken",
             "secured" : true,
-            "isAdmin": true,
+            "isAdmin": false,
             "isUser" : false
         },
         {
-            "controller": "../components/customer/controller/customer",
-            "route": "/api/v1/customer/createUser",
-            "method": "post",
-            "action": "createUser",
-            "secured" : true,
-            "isAdmin": true,
-            "isUser" : false
-        },
-        {
-            "controller": "../components/customer/controller/customer",
-            "route": "/api/v1/customer/getAll",
+            "controller": "../components/user/controller/user",
+            "route": "/api/v1/user/getAll",
             "method": "get",
             "action": "getAll",
             "secured" : true,
-            "isAdmin": true,
+            "isAdmin": false,
             "isUser" : false
         },
         {
-            "controller": "../components/customer/controller/customer",
-            "route": "/api/v1/customer/getById",
+            "controller": "../components/user/controller/user",
+            "route": "/api/v1/user/getById",
             "method": "get",
             "action": "getById",
             "secured" : true,
-            "isAdmin": true,
-            "isUser" : false
-        },
-        {
-            "controller": "../components/customer/controller/customer",
-            "route": "/api/v1/customer/delete",
-            "method": "delete",
-            "action": "deleteById",
-            "secured" : true,
-            "isAdmin": true,
-            "isUser" : false
-        },
-        {
-            "controller": "../components/account/controller/account",
-            "route": "/api/v1/customer/createAccount",
-            "method": "post",
-            "action": "createAccount",
-            "secured" : true,
             "isAdmin": false,
-            "isUser" : true
-        },
-        {
-            "controller": "../components/bank/controller/bank",
-            "route": "/api/v1/customer/deleteBank",
-            "method": "delete",
-            "action": "deleteBank",
-            "secured" : true,
-            "isAdmin": true,
             "isUser" : false
         },
         {
-            "controller": "../components/bank/controller/bank",
-            "route": "/api/v1/customer/getAllBank",
-            "method": "get",
-            "action": "getAllBank",
-            "secured" : true,
-            "isAdmin": true,
-            "isUser" : false
-        },
-        {
-            "controller": "../components/account/controller/account",
-            "route": "/api/v1/customer/getBalance",
-            "method": "get",
-            "action": "getBalance",
-            "secured" : true,
-            "isAdmin": false,
-            "isUser" : true
-        },
-        {
-            "controller": "../components/account/controller/account",
-            "route": "/api/v1/customer/getAccountBalance",
-            "method": "get",
-            "action": "getAccountBalance",
-            "secured" : true,
-            "isAdmin": false,
-            "isUser" : true
-        },
-        {
-            "controller": "../components/bank/controller/bank",
-            "route": "/api/v1/customer/updateBank",
-            "method": "put",
-            "action": "updateBankById",
-            "secured" : true,
-            "isAdmin": true,
-            "isUser" : false
-        },
-        {
-            "controller": "../components/customer/controller/customer",
-            "route": "/api/v1/customer/updateCustomer",
+            "controller": "../components/user/controller/user",
+            "route": "/api/v1/user/update",
             "method": "put",
             "action": "updateCustomerById",
             "secured" : true,
@@ -126,40 +56,155 @@
             "isUser" : false
         },
         {
-            "controller": "../components/account/controller/account",
-            "route": "/api/v1/customer/getAccount",
+            "controller": "../components/user/controller/user",
+            "route": "/api/v1/user/delete",
+            "method": "delete",
+            "action": "deleteById",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/loantype/controller/loantype",
+            "route": "/api/v1/user/loantype",
+            "method": "post",
+            "action": "createLoanType",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/loantype/controller/loantype",
+            "route": "/api/v1/user/loantype",
             "method": "get",
-            "action": "getAccountByAccountNumber",
-            "secured" : true,
+            "action": "getAllLoanTypes",
+            "secured" : false,
             "isAdmin": false,
-            "isUser" : true
+            "isUser" : false
         },
         {
-            "controller": "../components/account/controller/account",
-            "route": "/api/v1/customer/deposit",
-            "method": "post",
-            "action": "deposit",
+            "controller": "../components/loantype/controller/loantype",
+            "route": "/api/v1/user/loantype",
+            "method": "put",
+            "action": "updateLoanType",
             "secured" : true,
-            "isAdmin": false,
-            "isUser" : true
+            "isAdmin": true,
+            "isUser" : false
         },
         {
-            "controller": "../components/account/controller/account",
-            "route": "/api/v1/customer/withdraw",
+            "controller": "../components/loantype/controller/loantype",
+            "route": "/api/v1/user/loantype",
+            "method": "delete",
+            "action": "deleteLoanType",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+         {
+            "controller": "../components/loan/controller/loan",
+            "route": "/api/v1/user/loan",
             "method": "post",
-            "action": "withdraw",
+            "action": "createLoan",
             "secured" : true,
             "isAdmin": false,
             "isUser" : true
+        } ,
+        {
+            "controller": "../components/loan/controller/loan",
+            "route": "/api/v1/user/loan",
+            "method": "get",
+            "action": "getAllLoans",
+            "secured" : true,
+            "isAdmin": false,
+            "isUser" : false
+        } ,
+        {
+            "controller": "../components/loan/controller/loan",
+            "route": "/api/v1/user/loan",
+            "method": "put",
+            "action": "updateLoan",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        } ,
+        {
+            "controller": "../components/loan/controller/loan",
+            "route": "/api/v1/user/loan",
+            "method": "delete",
+            "action": "deleteLoan",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
         },
         {
-            "controller": "../components/account/controller/account",
-            "route": "/api/v1/customer/transfer",
-            "method": "post",
-            "action": "transfer",
+            "controller": "../components/loan/controller/loan",
+            "route": "/api/v1/user/approveloan",
+            "method": "put",
+            "action": "approveloan",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/loan/controller/loan",
+            "route": "/api/v1/user/rejectloan",
+            "method": "put",
+            "action": "rejectloan",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        },
+        {
+            "controller": "../components/emi/controller/emi",
+            "route": "/api/v1/user/payemi",
+            "method": "put",
+            "action": "payEMI",
             "secured" : true,
             "isAdmin": false,
-            "isUser" : true
-        }
+            "isUser" : false
+        }  ,
+        {
+            "controller": "../components/query/controller/query",
+            "route": "/api/v1/query/create",
+            "method": "post",
+            "action": "createQuery",
+            "secured" : true,
+            "isAdmin": false,
+            "isUser" : false
+        }  ,
+        {
+            "controller": "../components/query/controller/query",
+            "route": "/api/v1/query/update",
+            "method": "put",
+            "action": "updateQuery",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        }  ,
+        {
+            "controller": "../components/query/controller/query",
+            "route": "/api/v1/query/getAll",
+            "method": "get",
+            "action": "getAllQueries",
+            "secured" : true,
+            "isAdmin": false,
+            "isUser" : false
+        }  ,
+        {
+            "controller": "../components/query/controller/query",
+            "route": "/api/v1/query/delete",
+            "method": "delete",
+            "action": "deleteQuery",
+            "secured" : true,
+            "isAdmin": true,
+            "isUser" : false
+        }                                             
     ]
 }
+
+
+
+
+
+
+

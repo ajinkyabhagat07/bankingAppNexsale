@@ -5,6 +5,7 @@ const UnAuthorizedError = require('../../errors/unAuthorizedError');
 const secrateKey = 'ascvyudhaijkms'
 
 function checkJwtHS256( req, res, next) {
+  
     next()
 }
 
@@ -38,7 +39,8 @@ class Payload {
 
     static verifyToken(token) {
         //remove Bearer
-        let payload = jwt.verify(token, secrateKey)
+        const cleanedToken = token.split(" ").pop();
+        let payload = jwt.verify(cleanedToken, secrateKey)
         return payload;
 
     }
@@ -47,40 +49,76 @@ class Payload {
 
 const verifyAdmin = (req, res, next) => {
     try {
-        
-        Logger.info("verifyAdmin started")
-    
-        if (!req.cookies['auth'] && !req.headers['Auth']) {
-            throw new UnAuthorizedError("Cookie Not Found")
+        Logger.info("verifyAdmin started");
+
+        let token;
+
+       
+
+        // Check for token in Authorization header
+        if (req.headers['authorization']) {
+            const authHeader = req.headers['authorization'];
+            token = authHeader.split(" ").pop(); // Extract the token
         }
 
-        //token??
-        let token = req.cookies['auth'].split(" ")[2];
-        
-       
+        // If not found in header, check in cookies
+        if (!token && req.cookies['auth']) {
+            token = req.cookies['auth']; // Extract the token from cookies
+            token = token.replace(/Bearer\s+/g, "").trim();
+        }
+
+        // If token is still not found, throw an error
+        if (!token) {
+            throw new UnAuthorizedError("Token not found in Authorization header or cookies");
+        }
+
+        // Verify the token
         let payload = Payload.verifyToken(token);
 
-        
+        // Check if the user is an admin
         if (!payload.isAdmin) {
-            throw new UnAuthorizedError("only user can access this route..")
+            throw new UnAuthorizedError("Only admin can access this route");
         }
-        Logger.info("verifyAdmin ended")
-        Logger.info("next called")
+
+        Logger.info("verifyAdmin ended");
         next();
     } catch (error) {
-       next(error);
+        Logger.error("Error in verifyAdmin middleware", error);
+        next(error);
     }
-}
+};
 
 const verifyStaff = (req, res, next) => {
     try {
         Logger.info("verifystaff started")
-        if (!req.cookies['auth'] && !req.headers['auth']) {
+        if (!req.cookies['auth'] && !req.headers['authorization']) {
             throw new UnAuthorizedError("token not found...")
         }
-        //token??
-        let token = req.cookies['auth'].split(" ")[2];
+        let token;
+
+        
+
+        // Check for token in Authorization header
+        if (req.headers['authorization']) {
+            const authHeader = req.headers['authorization'];
+            token = authHeader.split(" ").pop(); // Extract the token
+        }
+
+        // If not found in header, check in cookies
+        if (!token && req.cookies['auth']) {
+            token = req.cookies['auth']; // Extract the token from cookies
+            token = token.replace(/Bearer\s+/g, "").trim();
+        }
+
+        // If token is still not found, throw an error
+        if (!token) {
+            throw new UnAuthorizedError("Token not found in Authorization header or cookies");
+        }
+
+        // Verify the token
         let payload = Payload.verifyToken(token);
+        
+       
         if (payload.isAdmin) {
             throw new UnAuthorizedError("Admin cant do this oprations , only user can do...")
         }

@@ -1,4 +1,4 @@
-const customerController = require("../components/customer/controller/customer");
+const customerController = require("../components/user/controller/user");
 const { checkJwtHS256, verifyAdmin, verifyStaff } = require("../middleware/authService");
 
 /* eslint-disable global-require */
@@ -110,12 +110,14 @@ class RouteConfig {
   ) {
     if (secured) {
       application.route(route)[method]((req, res, next) => {
+       
         checkJwtHS256(req, res, next);
       });
 
     }
    
     if (isAdmin) {
+      
         application.route(route)[method]((req, res, next) => {
           verifyAdmin(req, res, next);
         });

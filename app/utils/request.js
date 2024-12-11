@@ -57,7 +57,8 @@ const parseLimitAndOffset = (query) => {
 
     return {
         limit: limit,
-        offset: offset
+        offset: offset,
+        page : page
     }
 }
 

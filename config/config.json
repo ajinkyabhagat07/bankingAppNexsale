@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "Ajinkya@7",
-    "database": "users_db",
+    "database": "lending_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
